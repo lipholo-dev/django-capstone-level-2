@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<div class="container py-5">
+  <h1 class="mb-4 text-center">Upcoming Events</h1>
+
+  {% if events %}
+    <div class="row g-4">
+      {% for event in events %}
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-body">
+            <h5 class="card-title">{{ event.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ event.date|date:"F j, Y" }} — {{ event.venue }}</h6>
+            <p class="card-text">{{ event.description }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-center">No upcoming gigs — check back soon!</p>
+  {% endif %}
+</div>
+
+{% endblock %}
